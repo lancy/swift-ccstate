@@ -28,6 +28,8 @@ if args.upstream_report:
     assert report['success'] and report['numFailedTests'] == 0 and report['numPendingTests'] == 0
     actual = set()
     for suite in report['testResults']:
+        if '/packages/ccstate/src/' not in suite['name']:
+            continue
         path = 'packages/ccstate/src/' + suite['name'].split('/src/', 1)[1]
         for case in suite['assertionResults']:
             assert case['status'] == 'passed'

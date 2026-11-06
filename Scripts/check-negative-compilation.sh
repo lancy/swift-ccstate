@@ -18,6 +18,7 @@ trap 'rm -rf "$diagnostic_dir"' EXIT
 # A broken import, compiler, deployment target, or actor annotation must fail here,
 # rather than falsely satisfying the two negative checks below.
 swiftc -typecheck -swift-version 6 "${module_args[@]}" "$fixture_dir/positive-control.swift"
+swiftc -typecheck -swift-version 6 "${module_args[@]}" "$repo_root/Compatibility/positive/swiftui.swift"
 for fixture in set-computed watch-command; do
     if swiftc -typecheck -swift-version 6 "${module_args[@]}" "$fixture_dir/$fixture.swift" \
         >"$diagnostic_dir/$fixture.log" 2>&1; then

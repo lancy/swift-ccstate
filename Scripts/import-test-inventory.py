@@ -9,6 +9,8 @@ assert report['success'] and report['numFailedTests'] == 0
 root = Path(__file__).resolve().parent.parent
 tests = []
 for suite in report['testResults']:
+    if '/packages/ccstate/src/' not in suite['name']:
+        continue
     path = 'packages/ccstate/src/' + suite['name'].split('/src/', 1)[1]
     group = Path(path).name.removesuffix('.test.ts')
     for index, case in enumerate(suite['assertionResults'], 1):
