@@ -1,0 +1,347 @@
+{
+  "repository": "https://github.com/e7h4n/ccstate",
+  "commit": "86f95f2841c15474f08fcfc8e040c078dd2ab093",
+  "version": "6.1.0",
+  "tests": [
+    {
+      "id": "get-and-set.01",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react using ccstate in react"
+    },
+    {
+      "id": "get-and-set.02",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react computed should re-render"
+    },
+    {
+      "id": "get-and-set.03",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react useGet skips commits when equalityFn considers a new value equal"
+    },
+    {
+      "id": "get-and-set.04",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react user click counter should increment"
+    },
+    {
+      "id": "get-and-set.05",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react two atom changes should re-render once"
+    },
+    {
+      "id": "get-and-set.06",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react subscribes to a new atom when the useGet atom argument changes"
+    },
+    {
+      "id": "get-and-set.07",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react subscribes to a new computed when the useGet atom argument changes"
+    },
+    {
+      "id": "get-and-set.08",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react useSet writes to a new state when the signal argument changes"
+    },
+    {
+      "id": "get-and-set.09",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react useSet invokes a new command when the signal argument changes"
+    },
+    {
+      "id": "get-and-set.10",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react async callback will trigger rerender"
+    },
+    {
+      "id": "get-and-set.11",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react floating promise trigger rerender"
+    },
+    {
+      "id": "get-and-set.12",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react throw error if no store provide"
+    },
+    {
+      "id": "get-and-set.13",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "react will unmount when component cleanup"
+    },
+    {
+      "id": "get-and-set.14",
+      "file": "packages/react/src/__tests__/get-and-set.test.tsx",
+      "name": "useSet should be stable"
+    },
+    {
+      "id": "items.01",
+      "file": "packages/react/src/__tests__/items.test.tsx",
+      "name": "remove an item, then add another"
+    },
+    {
+      "id": "items.02",
+      "file": "packages/react/src/__tests__/items.test.tsx",
+      "name": "add an item with filtered list"
+    },
+    {
+      "id": "loadable-set.01",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "convert a async command to loadable"
+    },
+    {
+      "id": "loadable-set.02",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "async command reject turns into hasError"
+    },
+    {
+      "id": "loadable-set.03",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "sync command resolves immediately to hasData"
+    },
+    {
+      "id": "loadable-set.04",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "state atom setter transitions to hasData"
+    },
+    {
+      "id": "loadable-set.05",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "state atom setter writes to a new atom when the signal argument changes"
+    },
+    {
+      "id": "loadable-set.06",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "command setter invokes a new command when the signal argument changes"
+    },
+    {
+      "id": "loadable-set.07",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "second invoke cancels first pending promise"
+    },
+    {
+      "id": "loadable-set.08",
+      "file": "packages/react/src/__tests__/loadable-set.test.tsx",
+      "name": "invoke return value is identical to command return value"
+    },
+    {
+      "id": "loadable.01",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "convert promise to loadable"
+    },
+    {
+      "id": "loadable.02",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadableState only commits when the loadable state changes"
+    },
+    {
+      "id": "loadable.03",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadableState commits once for each async state transition"
+    },
+    {
+      "id": "loadable.04",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "reset promise atom will reset loadable"
+    },
+    {
+      "id": "loadable.05",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "switchMap"
+    },
+    {
+      "id": "loadable.06",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable turns suspense into values"
+    },
+    {
+      "id": "loadable.07",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable turns errors into values"
+    },
+    {
+      "id": "loadable.08",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable turns primitive throws into values"
+    },
+    {
+      "id": "loadable.09",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable goes back to loading after re-fetch"
+    },
+    {
+      "id": "loadable.10",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable can recover from error"
+    },
+    {
+      "id": "loadable.11",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable of a derived async atom does not trigger infinite loop (#1114)"
+    },
+    {
+      "id": "loadable.12",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "loadable of a derived async atom with error does not trigger infinite loop (#1330)"
+    },
+    {
+      "id": "loadable.13",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "does not repeatedly attempt to get the value of an unresolved promise atom wrapped in a loadable (#1481)"
+    },
+    {
+      "id": "loadable.14",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "should handle async error"
+    },
+    {
+      "id": "loadable.15",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "use lastLoadable should not update when new promise pending"
+    },
+    {
+      "id": "loadable.16",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLastLoadable does not commit when a new promise resolves to the same primitive"
+    },
+    {
+      "id": "loadable.17",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLastLoadable skips commits when equalityFn considers resolved values equal"
+    },
+    {
+      "id": "loadable.18",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "use lastLoadable should keep error"
+    },
+    {
+      "id": "loadable.19",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "use lastLoadable will will not use old promise value if new promise is made"
+    },
+    {
+      "id": "loadable.20",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "use lastLoadable will will not use old promise error if new promise is made"
+    },
+    {
+      "id": "loadable.21",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadable accept sync computed"
+    },
+    {
+      "id": "loadable.22",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadable subscribes to a new atom when the atom argument changes"
+    },
+    {
+      "id": "loadable.23",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadable subscribes to a new computed when the atom argument changes"
+    },
+    {
+      "id": "loadable.24",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLastLoadable subscribes to a new atom when the atom argument changes"
+    },
+    {
+      "id": "loadable.25",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLastLoadable subscribes to a new computed when the atom argument changes"
+    },
+    {
+      "id": "loadable.26",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "works with AbortError should not throw abortError"
+    },
+    {
+      "id": "loadable.27",
+      "file": "packages/react/src/__tests__/loadable.test.tsx",
+      "name": "useLoadable should catch errors"
+    },
+    {
+      "id": "memory.01",
+      "file": "packages/react/src/__tests__/memory.test.tsx",
+      "name": "should release memory after component unmount"
+    },
+    {
+      "id": "memory.02",
+      "file": "packages/react/src/__tests__/memory.test.tsx",
+      "name": "should release memory for promise & loadable"
+    },
+    {
+      "id": "readable-watch-migration.01",
+      "file": "packages/react/src/__tests__/readable-watch-migration.test.tsx",
+      "name": "does not miss a value written between render and subscription in either component"
+    },
+    {
+      "id": "readable-watch-migration.02",
+      "file": "packages/react/src/__tests__/readable-watch-migration.test.tsx",
+      "name": "turns synchronous computed read errors into loadable errors and recovers"
+    },
+    {
+      "id": "readable-watch-migration.03",
+      "file": "packages/react/src/__tests__/readable-watch-migration.test.tsx",
+      "name": "ignores a rejection from the old store after switching providers"
+    },
+    {
+      "id": "readable-watch-migration.04",
+      "file": "packages/react/src/__tests__/readable-watch-migration.test.tsx",
+      "name": "does not process a late resolution after unmounting a last-loadable subscription"
+    },
+    {
+      "id": "readable-watch-migration.05",
+      "file": "packages/react/src/__tests__/readable-watch-migration.test.tsx",
+      "name": "only accepts the current subscription when two targets share a Promise in StrictMode"
+    },
+    {
+      "id": "resolved.01",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "convert promise to awaited value"
+    },
+    {
+      "id": "resolved.02",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "loading state"
+    },
+    {
+      "id": "resolved.03",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "use lastLoadable should not update when new promise pending"
+    },
+    {
+      "id": "resolved.04",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useLastResolved does not commit when a new promise resolves to the same primitive"
+    },
+    {
+      "id": "resolved.05",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useLastResolved skips commits when equalityFn considers resolved values equal"
+    },
+    {
+      "id": "resolved.06",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useResolved accept sync computed"
+    },
+    {
+      "id": "resolved.07",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useResolved subscribes to a new atom when the atom argument changes"
+    },
+    {
+      "id": "resolved.08",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useResolved subscribes to a new computed when the atom argument changes"
+    },
+    {
+      "id": "resolved.09",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useLastResolved subscribes to a new atom when the atom argument changes"
+    },
+    {
+      "id": "resolved.10",
+      "file": "packages/react/src/__tests__/resolved.test.tsx",
+      "name": "useLastResolved subscribes to a new computed when the atom argument changes"
+    }
+  ]
+}

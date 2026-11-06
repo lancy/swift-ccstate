@@ -2,9 +2,9 @@
 
 A Swift-native port of [CCState](https://github.com/e7h4n/ccstate): independent stores, lazy computed values, dynamic dependencies, and commands with synchronous write batching. No package dependencies.
 
-Repository: `swift-ccstate`. Library product and import: `CCState`.
+Repository: `swift-ccstate`. Library products and imports: `CCState` and the optional `CCStateSwiftUI` adapter.
 
-**Experimental.** The core port is pinned to CCState **6.1.0**, commit [`86f95f2`](https://github.com/e7h4n/ccstate/commit/86f95f2841c15474f08fcfc8e040c078dd2ab093). Native UI integration and application performance acceptance are separate follow-up work. This package does not claim source compatibility with TypeScript or support for React, Vue, Solid, Svelte, or Babel.
+**Experimental.** The core and SwiftUI adapter are based on CCState **6.1.0**, commit [`86f95f2`](https://github.com/e7h4n/ccstate/commit/86f95f2841c15474f08fcfc8e040c078dd2ab093). Application migration and performance acceptance remain separate work. This package does not claim source compatibility with TypeScript or support for React, Vue, Solid, Svelte, or Babel.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ The API is experimental and has no stable release tag yet. Pin an audited revisi
 .package(url: "https://github.com/lancy/swift-ccstate.git", revision: "<commit>")
 ```
 
-Add the `CCState` library product to your target.
+Add the `CCState` library product to your target. SwiftUI targets also add `CCStateSwiftUI`; the core has no SwiftUI dependency.
 
 ## Basic use
 
@@ -86,16 +86,70 @@ Each evaluation has a stable, lazily created `options.signal`. Reevaluation canc
 
 `asyncCommand` starts its body synchronously and returns a `Task`. Its synchronous prefix batches writes; each later context write flushes independently. Cancellation and error observation remain with the caller.
 
+## SwiftUI
+
+Use `StoreProvider` to supply an explicitly owned Store. Typed property wrappers subscribe to signals and expose stable writers. Keep signal definitions outside `body` so multiple views read the same cached resource.
+
+```swift
+import CCState
+import CCStateSwiftUI
+import SwiftUI
+
+@MainActor
+enum CounterSignals {
+    static let count = CCState.State(0)
+    static let increment = Command<Void, Void> { context in
+        try context.set(count, update: { $0 + 1 })
+    }
+}
+
+@MainActor
+struct CounterView: View {
+    @LoadableValue(CounterSignals.count) private var count
+    @CommandSetter(CounterSignals.increment) private var increment
+    @SwiftUI.State private var failure: String?
+
+    var body: some View {
+        VStack {
+            switch count {
+            case .loading: ProgressView()
+            case .hasData(let value): Text("Count: \(value)")
+            case .hasError(let error): Text(error.localizedDescription)
+            }
+            Button("Increment") {
+                do { try increment() }
+                catch { failure = error.localizedDescription }
+            }
+            if let failure { Text(failure) }
+        }
+    }
+}
+
+@MainActor
+struct CounterRoot: View {
+    @SwiftUI.State private var store = Store()
+
+    var body: some View {
+        StoreProvider(store) { CounterView() }
+    }
+}
+```
+
+For shared asynchronous resources use `@LoadableValue(task:)` or `@ResolvedValue(task:keepLast:)`. The adapter observes the Store's original Task; removing a view releases its subscription and ignores late results without cancelling shared work. Read the [SwiftUI guide](Documentation/SwiftUI.md) for all wrappers, equality, error handling, and lifetime rules.
+
 ## Compatibility and verification
 
 The [compatibility inventory](Compatibility/README.md) accounts for all **211 upstream core-package tests**: 205 behavioral ports, two stronger compile-time constraints, three explicit native Task adaptations, and one JavaScript bundling-only test. The original upstream package tests are run unchanged as a separate reference check. Passing the original TypeScript suite alone does not verify this Swift implementation.
 
 The Swift compatibility matrix has 210 entries, with additional native lifetime tests. Two negative compiler fixtures verify that computed values cannot be written and commands cannot be observed. The Promise adaptations do **not** claim to reproduce Node's process-level `unhandledRejection` events. Swift values use `Equatable`, reference values use identity, and JavaScript `null`/`undefined` become typed Swift optionals. See the compatibility notes before assuming identical runtime behavior.
 
+The SwiftUI adapter has native counterparts for all **68 pinned `ccstate-react` tests**, plus native hosting, projection, cleanup, and ownership tests. CI runs the unchanged upstream core and React tests, verifies both inventories, tests Debug and Release, type-checks the public SwiftUI API, and builds for iOS Simulator. React DOM, StrictMode, and profiler commit counts are translated into native observation, view output, and ARC checks; passing this suite does not establish faster application startup or scrolling.
+
 ```sh
 swift test -Xswiftc -warnings-as-errors
 bash Scripts/check-negative-compilation.sh
 python3 Scripts/check-compatibility.py
+python3 Scripts/check-swiftui-compatibility.py
 swift build --configuration release -Xswiftc -warnings-as-errors
 ```
 

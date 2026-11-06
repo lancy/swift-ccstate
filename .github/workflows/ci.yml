@@ -36,8 +36,10 @@ jobs:
         run: bash Scripts/check-upstream.sh "$GITHUB_WORKSPACE/.reference/ccstate" "$RUNNER_TEMP/upstream-report.json"
       - name: Verify complete upstream case inventory
         run: python3 Scripts/check-compatibility.py --upstream-report "$RUNNER_TEMP/upstream-report.json"
+      - name: Verify React adapter counterpart inventory
+        run: python3 Scripts/check-swiftui-compatibility.py --upstream-report "$RUNNER_TEMP/upstream-report.json"
       - name: Verify Swift formatting
-        run: swift format lint --strict --recursive Package.swift Sources Tests Compatibility/negative
+        run: swift format lint --strict --recursive Package.swift Sources Tests Compatibility/negative Compatibility/positive
       - name: Run Swift compatibility and lifetime tests
         run: swift test -Xswiftc -warnings-as-errors --xunit-output "$RUNNER_TEMP/swift-tests.xml"
       - name: Verify invalid API usage fails compilation
@@ -47,4 +49,4 @@ jobs:
       - name: Build production library
         run: swift build --configuration release -Xswiftc -warnings-as-errors
       - name: Build iOS Simulator library
-        run: xcodebuild -scheme swift-ccstate -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ccstate-ios" CODE_SIGNING_ALLOWED=NO build -quiet
+        run: xcodebuild -scheme CCStateSwiftUI -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ccstate-ios" CODE_SIGNING_ALLOWED=NO build -quiet

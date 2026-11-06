@@ -16,7 +16,8 @@ python3 - "$workspace_file" "$reference_root" <<'PY'
 import json
 from pathlib import Path
 import sys
-Path(sys.argv[1]).write_text(json.dumps([str(Path(sys.argv[2]).resolve() / 'packages/ccstate')]))
+reference = Path(sys.argv[2]).resolve()
+Path(sys.argv[1]).write_text(json.dumps([str(reference / 'packages/ccstate'), str(reference / 'packages/react')]))
 PY
 cd "$reference_root"
 pnpm install --frozen-lockfile --ignore-scripts

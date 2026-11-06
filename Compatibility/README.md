@@ -26,7 +26,33 @@ The three native Task cases are `promise.01`, `.02`, and `.03`. They deliberatel
 - Weak-key storage uses signal destruction and weak reverse edges under ARC. Subscription cancellation is explicit; callers must break their own strong capture cycles. Computed getters hold the Store weakly and report `StoreError.storeReleased` after its destruction. Additional Swift-only tests verify store destruction, function-valued computed ownership, and repeated store creation.
 - The random diamond test uses a fixed seed (`0xCC57A7E`) to exercise both dependency orders reproducibly. The same 100-layer graph and 99-evaluation assertion are retained.
 
-React, Vue, Solid, Svelte, and Babel packages target their own runtimes and are outside this Swift **core** port. A native UI adapter requires its own observation, ownership, stale-settlement, and view-lifecycle acceptance before application migration. Core-test coverage does not establish smooth scrolling or faster startup.
+## SwiftUI adapter
+
+The optional `CCStateSwiftUI` product takes its UI contracts from the **68 tests** in the pinned `packages/react` package. [react-tests.json](react-tests.json) preserves every original file, complete case name, and stable ID. [ReactInventory.swift](../Tests/CCStateSwiftUITests/ReactInventory.swift) drives a parameterized native counterpart suite; an unimplemented case fails. The React inventory guard independently checks the unchanged upstream results and the complete native ID set.
+
+| Reference suite | Cases | Native validation |
+| --- | ---: | --- |
+| Get and set | 14 | Hosted SwiftUI output, equality, batched invalidation, stable writers, target changes, and missing-provider diagnostics. |
+| Item lists | 2 | Hosted `ForEach` identity, row writes, removal, insertion, and filtered derivation. |
+| Loadable setters | 8 | Local operation state, errors, target changes, return identity, and stale completion suppression. |
+| Loadable reads | 27 | Async transitions, error recovery, shared Tasks, retained snapshots, equality, and target changes. |
+| Memory | 2 | Weak references verify ARC release after subscription disposal, including pending Tasks. |
+| Read/watch migration | 5 | Read-after-subscribe initialization, synchronous errors, Store replacement, disposal, and shared-Task target races. |
+| Resolved reads | 10 | Data projections, pending state, retained data, equality, and target changes. |
+| **Total** | **68** | **Every reference case has a native counterpart.** |
+
+Additional tests host `ResolvedValue`, `LoadableStatus`, and `LoadableSetter` in SwiftUI, and verify cleanup error reporting, equality reconfiguration, and pending-observer ownership. Host tests run on macOS through `NSHostingView`; iOS Simulator builds separately verify both library modules. This suite does not execute the application in the Simulator.
+
+Native adaptations are explicit:
+
+- SwiftUI `body` cannot throw into a React error boundary. Synchronous reads and missing providers become `Loadable.hasError`; writers throw to their caller.
+- Signals retain static types. A read of a Task uses the `task:` initializer; arbitrary JavaScript primitive rejections use typed Swift errors.
+- React DOM, StrictMode remounts, garbage collection, and profiler commits have no identical SwiftUI API. Tests check native view output, Observation invalidation, released subscriptions, ARC, and stale-result ownership instead. The same shared-Task race is exercised without claiming to run React StrictMode.
+- `keepLast` retains the previous complete snapshot while another Task is pending, including a previous failure. A new failure replaces previous data. Ordinary resolved reads return `nil` for loading and errors; their projected value retains the full phase.
+- Subscriptions belong to SwiftUI's stored view state. They end when that storage is released, which can be later than a temporary disappearance. Disposing a UI observer cancels its waiter and rejects late publication; it never cancels a Task shared through the Store.
+- Stable writer objects are scoped to a Store and target. A replacement creates a new writer; escaped plain writers still address their original Store and target. Replaced loadable writers stop publishing local operation status.
+
+Vue, Solid, Svelte, and Babel integrations remain outside this package. Application migration and measured startup/scrolling acceptance are separate from library test coverage.
 
 ## Reproduce the upstream baseline
 
@@ -37,7 +63,7 @@ pnpm install --frozen-lockfile --ignore-scripts
 pnpm -F ccstate build
 ```
 
-Create a Vitest workspace JSON containing the absolute path to `packages/ccstate`, then run the original core package tests with that workspace:
+Create a Vitest workspace JSON containing the absolute paths to `packages/ccstate` and `packages/react`, then run both original package suites with that workspace:
 
 ```sh
 pnpm exec vitest run --workspace /absolute/path/ccstate.workspace.json \
@@ -48,6 +74,7 @@ From this Swift repository:
 
 ```sh
 python3 Scripts/check-compatibility.py --upstream-report /absolute/path/upstream-report.json
+python3 Scripts/check-swiftui-compatibility.py --upstream-report /absolute/path/upstream-report.json
 ```
 
-`Scripts/import-test-inventory.py` regenerates the inventory from a successful pinned upstream report. Review any upstream-version change and its test adaptations together; do not regenerate the baseline to hide a failed Swift assertion.
+`bash Scripts/check-upstream.sh /absolute/path/ccstate /absolute/path/upstream-report.json` performs the pinned-revision check, dependency installation, build, and combined 279-case run. `Scripts/import-test-inventory.py` and `Scripts/import-react-inventory.py` regenerate the respective inventories from a successful pinned upstream report. Review any upstream-version change and its test adaptations together; do not regenerate the baseline to hide a failed Swift assertion.
