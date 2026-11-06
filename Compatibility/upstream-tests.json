@@ -1,0 +1,1273 @@
+{
+  "repository": "https://github.com/e7h4n/ccstate",
+  "commit": "86f95f2841c15474f08fcfc8e040c078dd2ab093",
+  "version": "6.1.0",
+  "tests": [
+    {
+      "id": "abort.01",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed should accept abort signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.02",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) returns the same signal throughout one evaluation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.03",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) an old async continuation cannot cancel the current signal (read before await=false)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.04",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) an old async continuation cannot cancel the current signal (read before await=true)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.05",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) invalidates only on reevaluation, even when the new branch does not read signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.06",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) keeps signals isolated between stores",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.07",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) invalidates the previous signal when reevaluation throws before reading signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.08",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=false) keeps returned Promises unchanged and lets old reads finish despite an aborted signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.09",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) returns the same signal throughout one evaluation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.10",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) an old async continuation cannot cancel the current signal (read before await=false)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.11",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) an old async continuation cannot cancel the current signal (read before await=true)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.12",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) invalidates only on reevaluation, even when the new branch does not read signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.13",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) keeps signals isolated between stores",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.14",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) invalidates the previous signal when reevaluation throws before reading signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.15",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "computed signals (mounted=true) keeps returned Promises unchanged and lets old reads finish despite an aborted signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.16",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "observed computed signals stay stable within an evaluation and belong to that evaluation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.17",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "a late first read of an observed computed signal cannot cancel the current evaluation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "abort.18",
+      "file": "packages/ccstate/src/core/__tests__/abort.test.ts",
+      "name": "unsubscribing stops notification without taking ownership of a computed signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "basic.01",
+      "file": "packages/ccstate/src/core/__tests__/basic.test.ts",
+      "name": "creates atoms",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "basic.02",
+      "file": "packages/ccstate/src/core/__tests__/basic.test.ts",
+      "name": "should catch error when computed throw exception",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "basic.03",
+      "file": "packages/ccstate/src/core/__tests__/basic.test.ts",
+      "name": "should throw error in derived computed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "basic.04",
+      "file": "packages/ccstate/src/core/__tests__/basic.test.ts",
+      "name": "should not throw error in sub",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.01",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "computes once and notifies once for three synchronous writes without intermediate reads",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.02",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "returns fresh intermediate values but notifies only once",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.03",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "also keeps a captured public store.get fresh inside a command",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.04",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "shares the synchronous internal write boundary with nested commands",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.05",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "flushes an escaped setter after the command invocation returned",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.06",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "flushes the synchronous prefix before await and each later setter separately",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.07",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "flushes every write of a nested async command after its synchronous prefix",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.08",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "flushes all outstanding sources at a nested public set boundary",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.09",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "does not prematurely flush a nested public set whose changed-source size is unchanged",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.10",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "initializes a new subscription against pending values without an initial notification",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.11",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "refreshes conditional dependency edges after an eager read in a command",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.12",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "does not lose a changed branch when another branch returns the same result",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.13",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "deduplicates the same listener across multiple changed sources in one command",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.14",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "flushes final values even if a command throws after several writes",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.15",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "preserves a listener mounted by a state updater before that updater returns",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.16",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "keeps a retained computed getter reactive across reused write work buffers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "batch-command.17",
+      "file": "packages/ccstate/src/core/__tests__/batch-command.test.ts",
+      "name": "handles a signal abort handler writing during graph recomputation before notification",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "cache.01",
+      "file": "packages/ccstate/src/core/__tests__/cache.test.ts",
+      "name": "does not repeatedly traverse shared unmounted dependencies",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "cache.02",
+      "file": "packages/ccstate/src/core/__tests__/cache.test.ts",
+      "name": "keeps multiple unmounted root caches valid after a write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.01",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "should work",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.02",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "computed value should work",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.03",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "computed value should not writable",
+      "kind": "compile-time-enforcement"
+    },
+    {
+      "id": "ccstate.04",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "async value should works like sync value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.05",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "async computed should not follow old value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.06",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "func can set other value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.07",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "set an atom should trigger subscribe",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.08",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "set an atom in a command notifies the final value once",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.09",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "sub multiple atoms",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.10",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "sub computed atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.11",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "get read deps",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.12",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "get should return value directly",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.13",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "derived atom should trigger when deps changed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.14",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "outdated deps should not trigger sub",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.15",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "computed should only compute once if no deps changed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.16",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "an observable func process",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.17",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "generator in func",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "ccstate.18",
+      "file": "packages/ccstate/src/core/__tests__/ccstate.test.ts",
+      "name": "diamond deps and distinct compute",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.01",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "should log specified atoms to console",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.02",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "should log mount",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.03",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "should log unmount",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.04",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "should log computed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.05",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "should log everything of specified atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.06",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "use string to filter atoms",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.07",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "use regex to filter atoms",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.08",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "createDebugStore",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.09",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "createDebugStore with regex",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.10",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "createDebugStore with AtomWatch",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.11",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "createDebugStore with atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "console-interceptor.12",
+      "file": "packages/ccstate/src/debug/__tests__/console-interceptor.test.ts",
+      "name": "createDebugStore with empty actions",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "debug.01",
+      "file": "packages/ccstate/src/debug/__tests__/debug.test.ts",
+      "name": "get all subscribed atoms",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "debug.02",
+      "file": "packages/ccstate/src/debug/__tests__/debug.test.ts",
+      "name": "cant get read depts if atom is not subscribed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "debug.03",
+      "file": "packages/ccstate/src/debug/__tests__/debug.test.ts",
+      "name": "nestedAtomToString will print anonymous if no debugLabel is provided",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.01",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "can propagate updates with async atom chains",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.02",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "can get async atom with deps more than once before resolving (#1668)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.03",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "correctly updates async derived atom after get/set update",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.04",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "correctly handles the same promise being returned twice from an atom getter (#2151)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.05",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "do not keep atoms mounted between async recalculations",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.06",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "should not provide stale values to conditional dependents",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.07",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "settles never resolving async derivations with deps picked up sync",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.08",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "settles never resolving async derivations with deps picked up async",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.09",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "refreshes deps for each async read",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.10",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "should re-evaluate stable derived atom values in situations where dependencies are re-ordered (#2738)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dependencies.11",
+      "file": "packages/ccstate/src/core/__tests__/dependencies.test.ts",
+      "name": "handles complex dependency chains",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "distinct.01",
+      "file": "packages/ccstate/src/core/__tests__/distinct.test.ts",
+      "name": "default state & computed is distincted",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "distinct.02",
+      "file": "packages/ccstate/src/core/__tests__/distinct.test.ts",
+      "name": "will distinct computed calls",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dynamic-dependency-memory.01",
+      "file": "packages/ccstate/src/core/__tests__/dynamic-dependency-memory.test.ts",
+      "name": "dynamic dependency memory with an active watcher releases the old signal and payload after a branch switch (sync)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dynamic-dependency-memory.02",
+      "file": "packages/ccstate/src/core/__tests__/dynamic-dependency-memory.test.ts",
+      "name": "dynamic dependency memory with an active watcher releases the old signal and payload after a branch switch (before await)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dynamic-dependency-memory.03",
+      "file": "packages/ccstate/src/core/__tests__/dynamic-dependency-memory.test.ts",
+      "name": "dynamic dependency memory with an active watcher releases the old signal and payload after a branch switch (after await)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dynamic-dependency-memory.04",
+      "file": "packages/ccstate/src/core/__tests__/dynamic-dependency-memory.test.ts",
+      "name": "dynamic dependency memory with an active watcher an obsolete evaluation settling last cannot reattach its old dependency (before await)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "dynamic-dependency-memory.05",
+      "file": "packages/ccstate/src/core/__tests__/dynamic-dependency-memory.test.ts",
+      "name": "dynamic dependency memory with an active watcher an obsolete evaluation settling last cannot reattach its old dependency (after await)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "effect.01",
+      "file": "packages/ccstate/src/core/__tests__/effect.test.ts",
+      "name": "notifies once with the final value of nested synchronous commands",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "effect.02",
+      "file": "packages/ccstate/src/core/__tests__/effect.test.ts",
+      "name": "should trigger subscriber if func throws",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "empty-state.01",
+      "file": "packages/ccstate/src/core/__tests__/empty-state.test.ts",
+      "name": "preserves undefined written before the first read",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "empty-state.02",
+      "file": "packages/ccstate/src/core/__tests__/empty-state.test.ts",
+      "name": "passes the current null to an updater",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "empty-state.03",
+      "file": "packages/ccstate/src/core/__tests__/empty-state.test.ts",
+      "name": "passes the current undefined to an updater",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.01",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "subscription and explicit effect ownership batches the synchronous async-command prefix and notifies later writes separately",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.02",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "subscription and explicit effect ownership reads the initial value separately and does not invoke the listener initially",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.03",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "subscription and explicit effect ownership allows the task owner to compose an external cancellation signal explicitly",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.04",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "subscription and explicit effect ownership notifies synchronously when the observed value changes",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.05",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "subscription and explicit effect ownership cancels an observed computation old async work on reevaluation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "external.06",
+      "file": "packages/ccstate/src/core/__tests__/external.test.ts",
+      "name": "notifies for each independent value-changing public write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.01",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "test glitch 1",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.02",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "test glitch 2",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.03",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "diamond deps evaluation consistency test multiple diamond shape",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.04",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "diamond deps evaluation consistency test multiple diamond shape right",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.05",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "diamond deps evaluation consistency test multiple diamond shape alternate",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.06",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "diamond deps evaluation consistency test multiple diamond shape random",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "glitch.07",
+      "file": "packages/ccstate/src/core/__tests__/glitch.test.ts",
+      "name": "diamond deps evaluation performance should only eval once",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.01",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept get",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.02",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept hierarchy get",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.03",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "interceptor must call fn sync",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.04",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "interceptor must call fn sync for set",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.05",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "interceptor must call fn sync for derived",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.06",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept set",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.07",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept set hierarchy",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.08",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "intercept mount",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.09",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should not intercept mount if atom is already mounted",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.10",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "intercept unmount",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.11",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept out get only",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.12",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "should intercept computed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "interceptor.13",
+      "file": "packages/ccstate/src/core/__tests__/interceptor.test.ts",
+      "name": "computed must call fn sync",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.01",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "should release memory after delete value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.02",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "should release memory after base value & derived computed is deleted",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.03",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "with a long-lived base value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.04",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "should not hold onto dependent atoms that are not mounted",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.05",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "a retained disposed unsubscribe releases both its target and captured listener payload",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.06",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "unsubscribe on atom should release memory",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.07",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "unsubscribe on computed should release memory",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.08",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "unsubscribe a long-lived base atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "memory.09",
+      "file": "packages/ccstate/src/core/__tests__/memory.test.ts",
+      "name": "unsubscribe a computed atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "promise.01",
+      "file": "packages/ccstate/src/core/__tests__/promise.test.ts",
+      "name": "unhandled rejections watch will raise unhandled rejection",
+      "kind": "native-task-adaptation"
+    },
+    {
+      "id": "promise.02",
+      "file": "packages/ccstate/src/core/__tests__/promise.test.ts",
+      "name": "unhandled rejections set to a mounted computed will raise unhandled rejection",
+      "kind": "native-task-adaptation"
+    },
+    {
+      "id": "promise.03",
+      "file": "packages/ccstate/src/core/__tests__/promise.test.ts",
+      "name": "unhandled rejections manual process unhandled rejection will prevent unhandled rejection",
+      "kind": "native-task-adaptation"
+    },
+    {
+      "id": "propagation.01",
+      "file": "packages/ccstate/src/core/__tests__/propagation.test.ts",
+      "name": "visits a mounted 4-layer diamond in linear work per write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "propagation.02",
+      "file": "packages/ccstate/src/core/__tests__/propagation.test.ts",
+      "name": "visits a mounted 8-layer diamond in linear work per write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "propagation.03",
+      "file": "packages/ccstate/src/core/__tests__/propagation.test.ts",
+      "name": "visits a mounted 12-layer diamond in linear work per write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "propagation.04",
+      "file": "packages/ccstate/src/core/__tests__/propagation.test.ts",
+      "name": "pulls dirty upstreams before visiting an unequal-path join only once",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "propagation.05",
+      "file": "packages/ccstate/src/core/__tests__/propagation.test.ts",
+      "name": "updates shared downstreams after switching mounted dependencies and bails out on equal values",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.01",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing Error: offline and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.02",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing undefined and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.03",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing null and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.04",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing 0 and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.05",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing false and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.06",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) distinguishes a successful undefined from throwing  and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.07",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) replaces a cached error and propagates the new error through a derived catch",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.08",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: false) keeps downstream results cached when a computed throws the same error again",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.09",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing Error: offline and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.10",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing undefined and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.11",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing null and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.12",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing 0 and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.13",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing false and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.14",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) distinguishes a successful undefined from throwing  and recovers",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.15",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) replaces a cached error and propagates the new error through a derived catch",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "result.16",
+      "file": "packages/ccstate/src/core/__tests__/result.test.ts",
+      "name": "computed results (mounted: true) keeps downstream results cached when a computed throws the same error again",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.01",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "does not notify initially and notifies both listeners when the value changes",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.02",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should not fire subscription if primitive atom value is the same",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.03",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should not fire subscription if derived atom value is the same",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.04",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should unmount with store.get",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.05",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should unmount dependencies with store.get",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.06",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should update async atom with delay (#1813)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.07",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should override a promise by setting",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.08",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should update async atom with deps after await",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.09",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should not fire subscription when async atom promise is the same",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.10",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should notify subscription with tree dependencies",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.11",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should notify subscription with tree dependencies with bail-out",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.12",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should not trigger subscriber if the same value with chained dependency",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.13",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "read function should called during subscription",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.14",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should update with conditional dependencies",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.15",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should update derived atoms during write",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.16",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should not recompute a derived atom value if unchanged (#2168)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.17",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should notify pending write triggered asynchronously and indirectly (#2451)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.18",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "async atom with subtle timing case 1",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.19",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "async atom with subtle timing case 2",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.20",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "Unmount an atom that is no longer dependent within a derived atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.21",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should update derived atom even if dependances changed (#2697)",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.22",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "double unmount should not cause new mount",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.23",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "mount multiple times on same atom",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.24",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "can observe a computed with no dependencies without an initial notification",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.25",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "mount single atom in array",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.26",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "mount support signal",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.27",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "call unsub for multiple atoms will unsub all listeners",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.28",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should unmount base automatically when unmount listener",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.29",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should recompute derived atom when dependencies changed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.30",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "should unmount base$ atom in this complex scenario",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.31",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "shoule unmount base$ atom in this complex scenario 2",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.32",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "shoule unmount base$ atom in this complex scenario 3",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.33",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "shoule unmount base$ atom in this complex scenario 4",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "store.34",
+      "file": "packages/ccstate/src/core/__tests__/store.test.ts",
+      "name": "branch computed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "trace.01",
+      "file": "packages/ccstate/src/debug/__tests__/trace.test.ts",
+      "name": "get derived graph",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "trace.02",
+      "file": "packages/ccstate/src/debug/__tests__/trace.test.ts",
+      "name": "branch trace",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "tree-shaking.01",
+      "file": "packages/ccstate/src/__tests__/tree-shaking.test.ts",
+      "name": "published ESM and CJS bundles keep @__NO_SIDE_EFFECTS__ on signal factories",
+      "kind": "javascript-toolchain-only"
+    },
+    {
+      "id": "watch-listener-prototype.01",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "computes on subscription without calling the listener, and skips equal results",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.02",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "subscribes directly to a state without a computed wrapper",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.03",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "deduplicates a callback shared by a directly observed state and computed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.04",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "keeps direct state subscriptions isolated between stores",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.05",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "rejects a write-only command as a subscription target",
+      "kind": "compile-time-enforcement"
+    },
+    {
+      "id": "watch-listener-prototype.06",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "keeps a root mounted until its last distinct listener unsubscribes",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.07",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "updates an unequal-path diamond before notifying a shared root",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.08",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "deduplicates one callback observing two roots in the same propagation",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.09",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "batches synchronous command writes and notifies their final value",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.10",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "flushes writes that happened before a command throws",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.11",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "supports synchronous reentrant writes from a listener",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.12",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "runs remaining callbacks and throws listener errors as AggregateError",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.13",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "notifies error/value transitions but bails out on the same error",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.14",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "does not notify after unsubscribing during a callback",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.15",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "releases an obsolete branch while the direct root subscription remains alive",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.16",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "tracks dependencies first read after await while the root remains subscribed",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.17",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "does not let an obsolete async evaluation reattach an old dependency or notify",
+      "kind": "behavioral-port"
+    },
+    {
+      "id": "watch-listener-prototype.18",
+      "file": "packages/ccstate/src/core/__tests__/watch-listener-prototype.test.ts",
+      "name": "preserves computed AbortSignal ownership independently of listener lifetime",
+      "kind": "behavioral-port"
+    }
+  ]
+}

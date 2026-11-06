@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v6.1.1
+        with:
+          version: '10.33.4'
+      - name: Check out pinned upstream reference
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: e7h4n/ccstate
+          ref: 86f95f2841c15474f08fcfc8e040c078dd2ab093
+          path: .reference/ccstate
+          persist-credentials: false
+      - name: Run unchanged upstream package tests
+        run: bash Scripts/check-upstream.sh "$GITHUB_WORKSPACE/.reference/ccstate" "$RUNNER_TEMP/upstream-report.json"
+      - name: Verify complete upstream case inventory
+        run: python3 Scripts/check-compatibility.py --upstream-report "$RUNNER_TEMP/upstream-report.json"
+      - name: Verify Swift formatting
+        run: swift format lint --strict --recursive Package.swift Sources Tests Compatibility/negative
+      - name: Run Swift compatibility and lifetime tests
+        run: swift test -Xswiftc -warnings-as-errors --xunit-output "$RUNNER_TEMP/swift-tests.xml"
+      - name: Verify invalid API usage fails compilation
+        run: bash Scripts/check-negative-compilation.sh
+      - name: Run optimized Swift tests
+        run: swift test --configuration release -Xswiftc -DCCSTATE_TESTING -Xswiftc -warnings-as-errors --xunit-output "$RUNNER_TEMP/swift-release-tests.xml"
+      - name: Build production library
+        run: swift build --configuration release -Xswiftc -warnings-as-errors
+      - name: Build iOS Simulator library
+        run: xcodebuild -scheme swift-ccstate -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ccstate-ios" CODE_SIGNING_ALLOWED=NO build -quiet
